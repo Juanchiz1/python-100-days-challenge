@@ -1,6 +1,21 @@
 from flask import Flask
 app = Flask(__name__)
 
+def make_bold(function):
+    def wrapper():
+        return f'<b>{function()}</b>'
+    return wrapper
+
+def make_emphasis(function):
+    def wrapper():
+        return f'<em>{function()}</em>'
+    return wrapper
+
+def make_underlined(function):
+    def wrapper():
+        return f'<u>{function()}</u>'
+    return wrapper
+
 @app.route('/')
 def hello_world():
     return "<h1>Hello, World!</h1>"\
@@ -8,6 +23,9 @@ def hello_world():
         "<img src='https://media.giphy.com/media/3o6Zt481isNVuQI1l6/giphy.gif' alt='Hello GIF'>"    
 
 @app.route('/bye')
+@make_bold
+@make_emphasis
+@make_underlined
 def say_bye():
     return '<h1>Goodbye, World!</h1>'
 
