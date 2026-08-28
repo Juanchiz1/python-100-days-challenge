@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 import requests
 
 app = Flask(__name__)
@@ -35,5 +35,20 @@ def about():
 def contact():
     return render_template('contact.html')
 
-if __name__ == '__main__':
-    app.run(debug=True)
+@app.route("/contact", methods=["GET", "POST"])
+def contact():
+    if request.method == "POST":
+        
+        name = request.form["name"]
+        email = request.form["email"]
+        phone = request.form["phone"]
+        message = requests.request.form["message"]
+        
+       
+        print(f"Name: {name}\nEmail: {email}\nPhone: {phone}\nMessage: {message}")
+        
+        
+        return render_template("contact.html", msg_sent=True)
+    
+    
+    return render_template("contact.html", msg_sent=False)
