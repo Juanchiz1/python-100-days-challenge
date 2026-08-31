@@ -1,21 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
-
-    {% block styles %}
-    <!-- Load Bootstrap-Flask CSS here -->
-
-    <!-- Link to the styles.css here to apply styling to all the child templates.-->
-
-    {% endblock %}
+<head>
+    <meta charset="UTF-8">
     <title>{% block title %}{% endblock %}</title>
-  </head>
-  <body>
+    {{ bootstrap.load_css() }}
+    <!-- Enlace al archivo CSS local -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
     {% block content %}{% endblock %}
-  </body>
+    {{ bootstrap.load_js() }}
+</body>
 </html>
