@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Library</title>
+  </head>
+  <body>
+    <!-- CHALLENGE 1: Encabezado H1 -->
+    <h1>My Library</h1>
+
+    <!-- CHALLENGE 4 y 5: Renderizar dinámicamente o mostrar mensaje de biblioteca vacía -->
+    {% if not books %}
+        <p>Library is empty.</p>
+    {% else %}
+        <ul>
+            {% for book in books %}
+                <li>{{ book.title }} - {{ book.author }} - {{ book.rating }}/10</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <!-- CHALLENGE 1 y 5: Enlace funcional hacia la ruta /add -->
+    <a href="{{ url_for('add') }}">Add New Book</a>
+  </body>
+</html>
