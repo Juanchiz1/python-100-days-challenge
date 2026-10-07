@@ -1,27 +1,27 @@
-{% extends "base.html" %} {% block content %}
+{% extends 'base.html' %}
+{% from "bootstrap5/form.html" import render_form %}
 
-<div class="box">
-  <h1>Login</h1>
-  <!-- TODO: Use Message Flashing to display feedback to the user with a <p> -->
-   {% with messages = get_flashed_messages() %}
-  {% if messages %}
-    {% for message in messages %}
-      <p style="color: red;">{{ message }}</p>
-    {% endfor %}
-  {% endif %}
-{% endwith %}
-  <form action="{{ url_for('login') }}" method="post">
-    <input type="text" name="email" placeholder="Email" required="required" />
-    <input
-      type="password"
-      name="password"
-      placeholder="Password"
-      required="required"
-    />
-    <button type="submit" class="btn btn-primary btn-block btn-large">
-      Let me in.
-    </button>
-  </form>
-</div>
-
+{% block content %}
+<main class="mb-4">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <h1>Log In</h1>
+        
+        <!-- Mostrar mensajes flash -->
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            {% for message in messages %}
+              <p class="flash" style="color: red;">{{ message }}</p>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+        
+        <!-- Renderizar el formulario -->
+        {{ render_form(form) }}
+        
+      </div>
+    </div>
+  </div>
+</main>
 {% endblock %}
