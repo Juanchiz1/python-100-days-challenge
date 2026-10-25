@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# IDE y sistema
+.idea/
+.vscode/
+.DS_Store
+
+# Datos locales y credenciales
+.env
+chrome_profile/
+dia30/PasswordManagerImproved/data.json
+**/instance/users.db

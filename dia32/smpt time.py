@@ -1,10 +1,11 @@
+import os
 import random
 import smtplib
 
 from django.db import connection
 
 my_email = "sonymusicmx@gmail.com"
-password="REMOVIDO"
+password = os.environ.get("EMAIL_APP_PASSWORD")
 
 #with smtplib.SMTP('smtp.gmail.com') as connection:
 #  connection.starttls()

@@ -1,10 +1,11 @@
+import os
 import  requests
 from twilio.rest import Client
 
-api_key="REMOVIDO"
+api_key = os.environ.get("OWM_API_KEY")
 end_point = "https://api.themoviedb.org/3/search/movie?api_key="
-account_sid = "<KEY>"
-auth_token = "<PASSWORD>"
+account_sid = os.environ.get("TWILIO_ACCOUNT_SID")
+auth_token = os.environ.get("TWILIO_AUTH_TOKEN")
 
 weather_params = {
     "lat":4222,
